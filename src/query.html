@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query</title>
+    <!-- 引入css -->
+    <link rel="stylesheet" href="./style.css">
+    <!--下面是一些引入的bootstrap的库-->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <div class="container" id="container">
+        <br>
+        <div class="col-12" overflow="scroll">
+        <table class="table table-striped table-hover thead-default table-responsive"  style="max-height: 380px;">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Account</th>
+                <th>Password</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+                <!---->
+            </tbody>
+        </table>
+        </div><br>
+        <button class="btn btn-primary offset-md-5"><a href="index.html" class="word">返回主页</a></button>  
+    </div>
+    
+    <script>
+        var tbody = document.querySelector('tbody')     
+        getData(tbody)
+    </script>
+</body>
+</html>

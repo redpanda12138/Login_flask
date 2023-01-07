@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "account": "user",
+      "password": "user",
+      "email": "1298526422@qq.com"
+    },
+    {
+      "id": 2,
+      "account": "redpanda12138",
+      "password": "Qdd20011121",
+      "email": "1298526422@qq.com"
+    },
+    {
+      "account": "corgi1121",
+      "password": "dd20011121",
+      "email": "120201080201@ncepu.edu.cn",
+      "id": 3
+    },
+    {
+      "account": "zoey343",
+      "password": "211211",
+      "email": "zoey343@163.com",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "account": "user",
+      "password": "password",
+      "email": "1298526422@qq.com"
+    },
+    {
+      "id": 6,
+      "account": "redpanda12138",
+      "password": "password",
+      "email": "1298526422@qq.com"
+    },
+    {
+      "account": "corgi1121",
+      "password": "dd20011121",
+      "email": "120201080201@ncepu.edu.cn",
+      "id": 7
+    },
+    {
+      "account": "zoey343",
+      "password": "211211",
+      "email": "zoey343@163.com",
+      "id": 8
+    },
+    {
+      "account": "zoey343",
+      "password": "211211",
+      "email": "zoey343@163.com",
+      "id": 9
+    }
+  ]
+}

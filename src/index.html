@@ -31,7 +31,7 @@
                     <a href="#" class="social"><i class="fa fa-github"></i></a>
                 </div>
                 <span>您也可以选择以上几种方式注册您的账户</span>
-                <button type="submit" name="submit">注册</button>
+                <button type="submit" name="submit_1">注册</button>
             </form>
 
             <script>
@@ -59,10 +59,10 @@
         
         <div class="form-container sing-in-container">
             <!-- 登陆 -->
-            <form action="#">
+            <form id="signUpForm">
                 <h1>用户登陆</h1>
-                <input type="text" placeholder="用户名">
-                <input type="password" placeholder="密码">
+                <input type="text" placeholder="用户名" name="account">
+                <input type="password" placeholder="密码" name="password">
                 
                 <hr>
                 <span>
@@ -76,10 +76,27 @@
                     <a href="#" class="social"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="social"><i class="fa fa-github"></i></a>
                 </div>
-                <span>您可以选择以上几种方式登录您的账户</span>
-                <button>登陆</button>
+                <span>您可以选择以上几种方式登录您的账户</span>    
+                <button type="submit" name="submit_2">登陆</button>
             </form>
             
+            <script>
+                var form_2 = document.getElementById('signUpForm')
+                
+                //注册监听
+                form_2.addEventListener('submit',async function(e){                 
+                    //阻止刷新
+                    e.preventDefault();
+                    let result_2 = serializeForm1(form_2);
+                    console.log(result_2)
+                    
+                    var reg = 0
+                    reg = await logIn(result_2)
+                    console.log(reg);
+                    if(reg == 1){window.location.href='./main.html'}
+                })
+            </script>
+
         </div>
         
         <!-- 侧边栏内容 -->

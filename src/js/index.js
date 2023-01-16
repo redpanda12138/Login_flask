@@ -115,3 +115,34 @@ async function getData_u(body){                            //asysc和await成对
     body.innerHTML = htmlStr
     
 }
+
+async function logIn(applier){                            //asysc和await成对出现
+    /*fetch('http://localhost:3000/users')
+        .then((response)=>response.json())
+        .then((json)=>console.log(json));*/
+    let res = await http({
+        method:'get',
+        url:'http://localhost:3000/users'
+    });
+    console.log(res)
+    var el_flag = 0, re_flag = 0
+    res.forEach(element => {
+       if(applier.account === element.account){
+            el_flag = 1
+            if(applier.password === element.password){
+                alert('登录成功');
+                re_flag = 1;
+            }
+            else alert('密码错误');
+       }
+       
+    });
+    if(el_flag == 0){
+        alert('不存在该账户');
+    }
+    if(re_flag == 1){
+        return 1;
+    }
+   
+    
+}

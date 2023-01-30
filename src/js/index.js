@@ -38,15 +38,18 @@ async function getData(body){                            //asysc和await成对�
     /*fetch('http://localhost:3000/users')
         .then((response)=>response.json())
         .then((json)=>console.log(json));*/
+    
     let res = await http({
         method:'get',
-        url:'http://localhost:3000/users'
-    });
+        url:'http://localhost:5000/product'
+    })
     let htmlStr = ''
-    console.log(res)
+    console.log(res);
+    var i=0
     res.forEach(element => {
        htmlStr += `
        <tr>
+       <td>${i++}</td>
        <td>${element.id}</td>
        <td>${element.account}</td>
        <td>******</td>
@@ -65,19 +68,21 @@ async function getData_d(body){                            //asysc和await成对
         .then((json)=>console.log(json));*/
     let res = await http({
         method:'get',
-        url:'http://localhost:3000/users'
+        url:'http://localhost:5000/product'
     });
     let htmlStr = ''
-    console.log(res)
-    res.forEach(element => {
+    var i=0
+    console.log(res);
+    await res.forEach(element => {
        htmlStr += `
        <tr>
+       <td>${i++}</td>
        <td>${element.id}</td>
        <td>${element.account}</td>
        <td>******</td>
        <td>${element.email}</td>
        <td>
-            <button type='button' class='btn btn-link btn-sm' data-id="${element.id}" >删除</button>
+            <button type='button' class='btn btn-link btn-sm' data-id="${element.id}" data-num="${i}">删除</button>
        </td>
        </tr>
     `       
@@ -94,19 +99,21 @@ async function getData_u(body){                            //asysc和await成对
         .then((json)=>console.log(json));*/
     let res = await http({
         method:'get',
-        url:'http://localhost:3000/users'
+        url:'http://localhost:5000/product'
     });
     let htmlStr = ''
-    console.log(res)
-    res.forEach(element => {
+    var i=0
+    console.log(res);
+    await res.forEach(element => {
        htmlStr += `
        <tr>
+       <td>${i++}</td>
        <td>${element.id}</td>
        <td>${element.account}</td>
        <td>******</td>
        <td>${element.email}</td>
        <td>
-            <button type='button' class='btn btn-link btn-sm' data-id="${element.id}" >修改</button>
+            <button type='button' class='btn btn-link btn-sm' data-id="${element.id}" data-num="${i}">修改</button>
        </td>
        </tr>
     `       
@@ -122,11 +129,11 @@ async function logIn(applier){                            //asysc和await成对�
         .then((json)=>console.log(json));*/
     let res = await http({
         method:'get',
-        url:'http://localhost:3000/users'
+        url:'http://localhost:5000/product'
     });
     console.log(res)
-    var el_flag = 0, re_flag = 0
-    res.forEach(element => {
+    var el_flag = 0, re_flag = 0;
+    await res.forEach(element => {
        if(applier.account === element.account){
             el_flag = 1
             if(applier.password === element.password){

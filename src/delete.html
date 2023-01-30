@@ -20,9 +20,9 @@
     <div class="container" id="container">
         <br>
         <form action="" class="row offset-md-1">
-            <input id="delId" type="text" class="form-control col-sm-9" placeholder="Enter Delete Number"
+            <input id="delId" type="text" class="form-control col-sm-9" placeholder="Enter Delete Id"
                 name="delName">
-            <button id="delOne" class="btn btn-primary col-sm-2">DEL</button>
+            <button id="delOne" class="btn btn-primary col-sm-2" type="button">DEL</button>
         </form>
         <br>
         <div class="col-12" overflow="scroll">
@@ -30,6 +30,7 @@
                 <thead>
                     <tr>
                         <th>Number</th>
+                        <th>Id</th>
                         <th>Account</th>
                         <th>Password</th>
                         <th>Email</th>
@@ -41,23 +42,25 @@
                 </tbody>
             </table>
         </div><br>
-        <button class="btn btn-primary offset-md-5"><a href="index.html" class="word">返回主页</a></button>
+        <button class="btn btn-primary offset-md-5" type="button"><a href="index.html" class="word">返回主页</a></button>
     </div>
 
     <script>
         var tbody = document.querySelector('tbody')
         var res_t
-        fetch('http://localhost:3000/users').then((response) => response.json()).then((json) => res_t = json);
+        fetch('http://localhost:5000/product').then((response) => response.json()).then((json) => res_t = json);
         getData_d(tbody)
         tbody.addEventListener('click', async function (e) {
             if (e.target.tagName === 'BUTTON') {
                 password = prompt("请输入你的密码")
                 result = parseInt(e.target.dataset.id);
-                if (res_t[result - 1].password === password) {
+                num = parseInt(e.target.dataset.num);
+                
+                if (res_t[num-1].password === password) {
                     e.preventDefault();
                     var res = await http({
                         method: 'delete',
-                        url: 'http://localhost:3000/users' + '/' + result,
+                        url: 'http://localhost:5000/product' + '/' + result,
                         params: {
                             id: result
                         }
@@ -69,12 +72,13 @@
 
         $("#delOne").click(function () {
             password = prompt("请输入你的密码")
-            if (res_t[$("#delId").val()-1].password === password) {
+            number = prompt("请输入Number序列号")
+            if (res_t[number].password === password) {
                 $.ajax({
                     type: 'delete',
-                    url: 'http://localhost:3000/users/' + $("#delId").val(),
+                    url: 'http://localhost:5000/product/' + $("#delId").val(),
                     success: function (data) {
-                        console.log("del success")
+                        alert("del success")
                     },
                     error: function () {
                         alert("del error")

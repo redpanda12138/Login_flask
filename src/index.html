@@ -43,14 +43,17 @@
                     e.preventDefault();
                     let result = serializeForm1(form);
                     console.log(result);
+                    try {
                     let res = await http({
                         method:'post',
-                        url:'http://localhost:3000/users',
+                        url:'http://localhost:5000/product',
                         data:result
                     })
                     //提交弹窗
-                    console.log(res.status);
-                    
+                    //console.log(res.status);
+                    }catch (error) {
+                        console.log(error);
+                    }
                 })
             </script>
 

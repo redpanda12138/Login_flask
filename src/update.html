@@ -21,12 +21,12 @@
         <br>
         <form class="row offset-md-1 mb-2">
             <input id="upId_1" type="text" class="form-control col-sm-9" placeholder="Enter a new password" name="upName_1">
-            <button id="upOne" class="btn btn-primary col-sm-2">Update</button>
+            <button id="upOne" class="btn btn-primary col-sm-2" type="button">Update</button>
         </form>
 
         <form class="row offset-md-1 ">
             <input id="upId_2" type="text" class="form-control col-sm-9" placeholder="Enter a new email" name="upName_2">
-            <button id="upTwo" class="btn btn-primary col-sm-2">Update</button>
+            <button id="upTwo" class="btn btn-primary col-sm-2" type="button">Update</button>
         </form>
         <br>
         <div class="col-12" overflow="scroll">
@@ -34,6 +34,7 @@
                 <thead>
                     <tr>
                         <th>Number</th>
+                        <th>Id</th>
                         <th>Account</th>
                         <th>Password</th>
                         <th>Email</th>
@@ -50,18 +51,19 @@
 
     <script>
         var tbody = document.querySelector('tbody')
-        var res_t
-        fetch('http://localhost:3000/users').then((response) => response.json()).then((json) => res_t = json);
+        var res_t,num
+        fetch('http://localhost:5000/product').then((response) => response.json()).then((json) => res_t = json);
         getData_u(tbody)
         tbody.addEventListener('click', async function (e) {
             if (e.target.tagName === 'BUTTON') {
                 password = prompt("请输入你的密码")
                 result = parseInt(e.target.dataset.id);
-                if (res_t[result - 1].password === password) {
+                num = parseInt(e.target.dataset.num);
+                if (res_t[num-1].password === password) {
                     e.preventDefault();
                     var res = await http({
                         method: 'get',
-                        url: 'http://localhost:3000/users' + '/' + result,
+                        url: 'http://localhost:5000/product' + '/' + result,
                         params: {
                             id: result
                         }
@@ -72,12 +74,14 @@
                     $("#upOne").click(function () {
                         $.ajax({
                             type: 'patch',
-                            url: 'http://localhost:3000/users/' + result,  //$("#upId").val()
-                            data: {
+                            url: 'http://localhost:5000/product/' + result,  //$("#upId").val()
+                            contentType: 'application/json;charset=UTF-8',
+                            async: true,
+                            data:JSON.stringify( {
                                 password: $("#upId_1").val()
-                            },
+                            }),
                             success: function (data) {
-                                console.log("update success")
+                                alert("update success")
                             },
                             error: function () {
                                 alert("update error")
@@ -89,12 +93,14 @@
                     $("#upTwo").click(function () {
                         $.ajax({
                             type: 'patch',
-                            url: 'http://localhost:3000/users/' + result,  //$("#upId").val()
-                            data: {
+                            url: 'http://localhost:5000/product/' + result,  //$("#upId").val()
+                            contentType: 'application/json;charset=UTF-8',
+                            async: true,
+                            data:JSON.stringify({
                                 email: $("#upId_2").val()
-                            },
+                            }),
                             success: function (data) {
-                                console.log("update success")
+                                alert("update success")
                             },
                             error: function () {
                                 alert("update error")

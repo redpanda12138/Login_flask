@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Init db
-db = SQLAlchemy(app)
+db = SQLAlchemy(app) 
 # Init ma
 ma = Marshmallow(app)
 
